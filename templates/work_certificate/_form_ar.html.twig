@@ -1,0 +1,63 @@
+<style>
+    label {
+        float: right;
+    }
+    * { font-family: DejaVu Sans, sans-serif; }
+</style>
+<div class='container'>
+    {{ form_start(form) }}  
+        <div class="form-group">
+            {{ form_row(form.reference, { 'label': 'الرقم الالي' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}
+        </div>
+            <datalist id="references-list">
+                {%  for worker in workers %}
+                    <option value="{{worker.ref}} ({{worker.Nom}}-{{worker.Prenom}})">
+                {% endfor %}  
+            </datalist>
+        <div class="form-group">
+            {{ form_row(form.chef, {'label': 'الرئيس' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}  
+        </div>    
+        <div class="form-group">
+            {{ form_row(form.Nom, {'label': ' الاسم' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}   
+        </div>    
+
+        <div class="form-group">
+            {{ form_row(form.Prenom, {'label': 'اللقب' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}   
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.Genre, {'label': ' الجنس' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}          
+        </div>   
+        <div class="form-group">
+            {{ form_row(form.poste, {'label': 'الخطة' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}          
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.Signature, {'label': ' الموقع' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}          
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.type,{'label': ' الصفة' ,'attr': {'class': 'form-control','dir':'rtl'}}) }}   
+        </div>   
+        <div class="row">
+            {{ form_row(form.save,{'label': 'تسجيل' ,'attr': {'class': 'btn btn-success'}}) }}   
+            {{ form_row(form.print,{'label': 'طباعة' ,'attr': {'class': 'btn btn-primary'}}) }}   
+        </div>       
+    {{ form_end(form) }}
+    {% block javascripts %}
+        <script>
+            if (document.getElementById('certif_ar_reference')){
+                document.getElementById("certif_ar_reference")
+                    .addEventListener("input", function(event){
+                        if(event.inputType == "insertReplacementText" || event.inputType == null) {
+                            console.log(event.target.value.slice(event.target.value.indexOf('(')+1, event.target.value.indexOf(')')));
+                            const fullname = event.target.value.slice(event.target.value.indexOf('(')+1, event.target.value.indexOf(')')).split('-')
+                            document.getElementById('certif_ar_Nom').value= fullname[0]
+                            document.getElementById('certif_ar_Prenom').value= fullname[1]
+
+                    }
+                })
+            }
+            else{
+                console.log("bye");
+            }
+        </script>      
+    {% endblock %}
+</div>

@@ -1,0 +1,59 @@
+
+<div class='container'>
+    {{ form_start(form) }}  
+        <div class="form-group">
+            
+            {{ form_row(form.reference, { 'label': 'Matricule' ,'attr': {'class': 'form-control'}}) }}
+        </div>
+            <datalist id="references-list">
+                {%  for worker in workers %}
+                    <option value="{{worker.ref}} ({{worker.Nom}}-{{worker.Prenom}})">
+                {% endfor %}  
+            </datalist>
+        <div class="form-group">
+            {{ form_row(form.chef, {'attr': {'class': 'form-control'}}) }}  
+        </div>    
+        <div class="form-group">
+            {{ form_row(form.Nom, {'attr': {'class': 'form-control'}}) }}   
+        </div>    
+
+        <div class="form-group">
+            {{ form_row(form.Prenom, {'attr': {'class': 'form-control'}}) }}   
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.Genre, {'attr': {'class': 'form-control'}}) }}          
+        </div>   
+        <div class="form-group">
+            {{ form_row(form.poste, {'attr': {'class': 'form-control'}}) }}          
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.Signature, {'attr': {'class': 'form-control'}}) }}          
+        </div>  
+        <div class="form-group">
+            {{ form_row(form.type,{'label': ' Situation' ,'attr': {'class': 'form-control'}}) }}   
+        </div>         
+        <div class="row">
+            {{ form_row(form.save,{'label': 'sauvegarder' ,'attr': {'class': 'btn btn-success'}}) }}   
+            {{ form_row(form.print,{'label': 'imprimer' ,'attr': {'class': 'btn btn-primary'}}) }}   
+        </div>   
+    {{ form_end(form) }}
+    {% block javascripts %}
+        <script>
+            if (document.getElementById('certif_reference')){
+                document.getElementById("certif_reference")
+                    .addEventListener("input", function(event){
+                        if(event.inputType == "insertReplacementText" || event.inputType == null) {
+                            console.log(event.target.value.slice(event.target.value.indexOf('(')+1, event.target.value.indexOf(')')));
+                            const fullname = event.target.value.slice(event.target.value.indexOf('(')+1, event.target.value.indexOf(')')).split('-')
+                            document.getElementById('certif_Nom').value= fullname[0]
+                            document.getElementById('certif_Prenom').value= fullname[1]
+
+                    }
+                })
+            }
+            else{
+                console.log("bye");
+            }
+        </script>      
+    {% endblock %}
+</div>
