@@ -19,6 +19,7 @@ security:
             security: false
         main:
             lazy: true
+            entry_point: App\Security\AuthenticationEntryPoint
             provider: app_user_provider
             custom_authenticator: App\Security\AppAuthAuthenticator
             logout:

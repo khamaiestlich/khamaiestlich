@@ -25,12 +25,29 @@ class WorkCertificateController extends AbstractController
 {
     /**
      * @Route("/", name="app_work_certificate_index", methods={"GET"})
+     * @Route("/{lang}", name="app_work_certificate_lang", methods={"GET"})
      */
-    public function index(WorkCertificateRepository $workCertificateRepository, ManagerRegistry $doctrine): Response
+    public function index(?String $lang,WorkCertificateRepository $workCertificateRepository, ManagerRegistry $doctrine): Response
     {
-        return $this->render('work_certificate/index.html.twig', [
-            'work_certificates' => $workCertificateRepository->findAll(),
-        ]);
+        if($lang === "ar"){
+            return $this->render('work_certificate/index.html.twig', [
+                'work_certificates' => $workCertificateRepository->findBy([
+                    'lang' => 'ar'
+                ]),
+            ]);
+        }
+        else if ($lang === "fr") {
+            return $this->render('work_certificate/index.html.twig', [
+                'work_certificates' => $workCertificateRepository->findBy([
+                    'lang' => 'fr'
+                ]),
+            ]);
+        }
+        else{
+            return $this->render('work_certificate/index.html.twig', [
+                'work_certificates' => $workCertificateRepository->findAll(),
+            ]);
+        }
     }
 
     /**

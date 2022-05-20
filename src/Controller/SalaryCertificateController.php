@@ -6,6 +6,7 @@ use App\Entity\SalaryCertificate;
 use App\Entity\WorkCertificate;
 use App\Entity\Worker;
 use App\Form\SalaryCertificateType;
+use App\Repository\PrimeRepository;
 use App\Repository\SalaryCertificateRepository;
 use App\Repository\WorkerRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -33,8 +34,9 @@ class SalaryCertificateController extends AbstractController
     /**
      * @Route("/new", name="app_salary_certificate_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ManagerRegistry $doctrine,SalaryCertificateRepository $salaryCertificateRepository, WorkerRepository $workerRepository): Response
+    public function new(Request $request, ManagerRegistry $doctrine,SalaryCertificateRepository $salaryCertificateRepository, WorkerRepository $workerRepository, PrimeRepository $primeRepository): Response
     {
+        $prime = $primeRepository->find(1);
         $entityManager = $doctrine->getManager();
         $salaryCertificate = new SalaryCertificate();
         $form = $this->createForm(SalaryCertificateType::class);
@@ -47,20 +49,17 @@ class SalaryCertificateController extends AbstractController
             $salaryCertificate->setP4($form['p4']->getData());
             $salaryCertificate->setP5($form['p5']->getData());
             $salaryCertificate->setP6($form['p6']->getData());
-            $salaryCertificate->setP7($form['p7']->getData());
-            $salaryCertificate->setP8($form['p8']->getData());
-            $salaryCertificate->setP9($form['p9']->getData());
             $salaryCertificate->setP10($form['p10']->getData());
             $salaryCertificate->setP11($form['p11']->getData());
-            $salaryCertificate->setP12($form['p12']->getData());
             $salaryCertificate->setP13($form['p13']->getData());
             $salaryCertificate->setP14($form['p14']->getData());
             $salaryCertificate->setP15($form['p15']->getData());
             $salaryCertificate->setP16($form['p16']->getData());
-            $salaryCertificate->setP17($form['p17']->getData());
             $salaryCertificate->setP18($form['p18']->getData());
             $salaryCertificate->setP19($form['p19']->getData());
             $salaryCertificate->setP20($form['p20']->getData());
+            $salaryCertificate->setSigner($form['Signature']->getData());
+            $salaryCertificate->setChef($form['chef']->getData());
             $salaryCertificate->setCreatedAt(new \DateTime());
             $salaryCertificate->setCreatedBy($this->getUser());
             $reference = explode(' ',trim($form['reference']->getData()))[0];
@@ -84,6 +83,7 @@ class SalaryCertificateController extends AbstractController
 
         return $this->renderForm('salary_certificate/new.html.twig', [
             'salary_certificate' => $salaryCertificate,
+            'prime'=>  $prime,
             'form' => $form,
             'workers' => $workerRepository->findAll(),
         ]);
@@ -92,11 +92,13 @@ class SalaryCertificateController extends AbstractController
     /**
      * @Route("/{id}", name="app_salary_certificate_show", methods={"GET"})
      */
-    public function show(SalaryCertificate $salaryCertificate): Response
+    public function show(SalaryCertificate $salaryCertificate, PrimeRepository $primeRepository): Response
     {
-        $this->generatePdf($salaryCertificate);
+        // $this->generatePdf($salaryCertificate);
+        $prime = $primeRepository->find(1);
         return $this->render('salary_certificate/show.html.twig', [
             'salary_certificate' => $salaryCertificate,
+            'prime' => $prime
         ]);
     }
 

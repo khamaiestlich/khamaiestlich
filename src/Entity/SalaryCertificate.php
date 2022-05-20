@@ -47,20 +47,20 @@ class SalaryCertificate
      */
     private $p6;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $p7;
+    // /**
+    //  * @ORM\Column(type="float")
+    //  */
+    // private $p7;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $p8;
+    // /**
+    //  * @ORM\Column(type="float")
+    //  */
+    // private $p8;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $p9;
+    // /**
+    //  * @ORM\Column(type="float")
+    //  */
+    // private $p9;
 
     /**
      * @ORM\Column(type="float")
@@ -72,10 +72,10 @@ class SalaryCertificate
      */
     private $p11;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $p12;
+    // /**
+    //  * @ORM\Column(type="float")
+    //  */
+    // private $p12;
 
     /**
      * @ORM\Column(type="float")
@@ -97,10 +97,10 @@ class SalaryCertificate
      */
     private $p16;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $p17;
+    // /**
+    //  * @ORM\Column(type="float")
+    //  */
+    // private $p17;
 
     /**
      * @ORM\Column(type="float")
@@ -131,6 +131,16 @@ class SalaryCertificate
      * @ORM\Column(type="date")
      */
     private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $signer;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $chef;
 
    
 
@@ -211,41 +221,41 @@ class SalaryCertificate
         return $this;
     }
 
-    public function getP7(): ?float
-    {
-        return $this->p7;
-    }
+    // public function getP7(): ?float
+    // {
+    //     return $this->p7;
+    // }
 
-    public function setP7(float $p7): self
-    {
-        $this->p7 = $p7;
+    // public function setP7(float $p7): self
+    // {
+    //     $this->p7 = $p7;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getP8(): ?float
-    {
-        return $this->p8;
-    }
+    // public function getP8(): ?float
+    // {
+    //     return $this->p8;
+    // }
 
-    public function setP8(float $p8): self
-    {
-        $this->p8 = $p8;
+    // public function setP8(float $p8): self
+    // {
+    //     $this->p8 = $p8;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getP9(): ?float
-    {
-        return $this->p9;
-    }
+    // public function getP9(): ?float
+    // {
+    //     return $this->p9;
+    // }
 
-    public function setP9(float $p9): self
-    {
-        $this->p9 = $p9;
+    // public function setP9(float $p9): self
+    // {
+    //     $this->p9 = $p9;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getP10(): ?float
     {
@@ -271,17 +281,17 @@ class SalaryCertificate
         return $this;
     }
 
-    public function getP12(): ?float
-    {
-        return $this->p12;
-    }
+    // public function getP12(): ?float
+    // {
+    //     return $this->p12;
+    // }
 
-    public function setP12(float $p12): self
-    {
-        $this->p12 = $p12;
+    // public function setP12(float $p12): self
+    // {
+    //     $this->p12 = $p12;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getP13(): ?float
     {
@@ -331,17 +341,17 @@ class SalaryCertificate
         return $this;
     }
 
-    public function getP17(): ?float
-    {
-        return $this->p17;
-    }
+    // public function getP17(): ?float
+    // {
+    //     return $this->p17;
+    // }
 
-    public function setP17(float $p17): self
-    {
-        $this->p17 = $p17;
+    // public function setP17(float $p17): self
+    // {
+    //     $this->p17 = $p17;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getP18(): ?float
     {
@@ -411,6 +421,30 @@ class SalaryCertificate
     public function setCreatedAt(\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getSigner(): ?string
+    {
+        return $this->signer;
+    }
+
+    public function setSigner(?string $signer): self
+    {
+        $this->signer = $signer;
+
+        return $this;
+    }
+
+    public function getChef(): ?string
+    {
+        return $this->chef;
+    }
+
+    public function setChef(?string $chef): self
+    {
+        $this->chef = $chef;
 
         return $this;
     }
