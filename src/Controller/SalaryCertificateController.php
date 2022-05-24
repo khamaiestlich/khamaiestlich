@@ -42,7 +42,8 @@ class SalaryCertificateController extends AbstractController
         $form = $this->createForm(SalaryCertificateType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) { 
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd($form->getData());
             $salaryCertificate->setP1($form['P1']->getData());
             $salaryCertificate->setP2($form['p2']->getData());
             $salaryCertificate->setP3($form['p3']->getData());

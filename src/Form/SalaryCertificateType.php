@@ -26,7 +26,7 @@ class SalaryCertificateType extends AbstractType
             ])
             ->add('chef', ChoiceType::class, [
                 'choices' => [
-                    'le Chef du Département de la Zona Nord Est' => "le Chef du Département de la Zona Nord Est",
+                    'le Chef du Département de la Zone Nord Est' => "le Chef du Département de la Zone Nord Est",
                     'le chef de division administrative et gestion' => "le chef de division administrative et gestion",
                 ]
             ])
@@ -48,12 +48,7 @@ class SalaryCertificateType extends AbstractType
                     'Femme' => "F",
                 ]
             ])
-            ->add('poste', TextType::class, [
-                'attr'  =>[
-                'placeholder'   => 'Poste . . .',
-                'required' => true
-                ]]
-            )
+
             ->add('Signature',TextType::class,[
                 'attr'  =>[
                     'placeholder'   => 'Signature . . .',
@@ -65,6 +60,24 @@ class SalaryCertificateType extends AbstractType
                     'TITULAIRE' => "TITULAIRE",
                     'STAGIAIRE' => "STAGIAIRE",
                 ]
+            ])
+            ->add('PRBrute',null,[
+                'label' => 'PR brut'
+            ])
+            ->add('note',null,[
+                'label' => 'Note'
+            ])
+            ->add('PFA',null,[
+                'label' => 'PFA'
+            ])
+            ->add('PM',null,[
+                'label' => 'PM'
+            ])
+            ->add('APFA',null,[
+                'label' => 'APFA'
+            ])
+            ->add('vex',null,[
+                'label' => 'variable d\'expeloitation'
             ])
             ->add('P1')
             ->add('p2')

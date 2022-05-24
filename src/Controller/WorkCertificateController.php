@@ -25,7 +25,7 @@ class WorkCertificateController extends AbstractController
 {
     /**
      * @Route("/", name="app_work_certificate_index", methods={"GET"})
-     * @Route("/{lang}", name="app_work_certificate_lang", methods={"GET"})
+     * @Route("/lang/{lang}", name="app_work_certificate_lang", methods={"GET"})
      */
     public function index(?String $lang,WorkCertificateRepository $workCertificateRepository, ManagerRegistry $doctrine): Response
     {

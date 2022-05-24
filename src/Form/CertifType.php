@@ -26,7 +26,7 @@ class CertifType extends AbstractType
             ])
             ->add('chef', ChoiceType::class, [
                 'choices' => [
-                    'le Chef du Département de la Zona Nord Est' => "le Chef du Département de la Zona Nord Est",
+                    'le Chef du Département de la Zone Nord Est' => "le Chef du Département de la Zone Nord Est",
                     'le chef de division administrative et gestion' => "le chef de division administrative et gestion",
                 ]
             ])

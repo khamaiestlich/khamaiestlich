@@ -11,6 +11,9 @@
         </datalist>
        <div class="form-group">
             {{ form_row(form.chef, {'attr': {'class': 'form-control'}}) }}  
+        </div> 
+        <div class="form-group">
+            {{ form_row(form.Signature, {'attr': {'class': 'form-control'}}) }}          
         </div>    
         <div class="form-group">
             {{ form_row(form.Nom, {'attr': {'class': 'form-control'}}) }}   
@@ -22,43 +25,68 @@
         <div class="form-group">
             {{ form_row(form.Genre, {'attr': {'class': 'form-control'}}) }}          
         </div>   
-        <div class="form-group">
+        {# <div class="form-group">
             {{ form_row(form.poste, {'attr': {'class': 'form-control'}}) }}          
-        </div>  
-        <div class="form-group">
-            {{ form_row(form.Signature, {'attr': {'class': 'form-control'}}) }}          
-        </div>  
+        </div>   #} 
         <div class="form-group">
             {{ form_row(form.type,{'label': ' Situation' ,'attr': {'class': 'form-control'}}) }}   
-        </div>         
+        </div>
 
 
+    <div class="form-group row">
+        <div class="col">
+            {{ form_row(form.PRBrute, { 'label': 'PRBrute ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.note, { 'label': 'note ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+    </div>
 
+    <div class="form-group row">
+        <div class="col">
+            {{ form_row(form.PFA, { 'label': 'PFA ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.PM, { 'label': 'PM ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            {{ form_row(form.APFA, { 'label': 'APFA ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.vex, { 'label': 'prime d exploitation 134.24 ' ,'attr': {'class': 'form-control','value':0}}) }}
+        </div>
+    </div>
 
         <div class="form-group row">
         <div class="col">
-            {{ form_row(form.P1, { 'label': 'Element global mensuel ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.P1, { 'label': 'Element global mensuel ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         <div class="col">
-            {{ form_row(form.p2, { 'label': 'indemnite de logement ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p2, { 'label': 'indemnite de logement ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         </div>
         <div class="form-group row">
         <div class="col">
-            {{ form_row(form.p3, { 'label': 'Prime de bilan mensuel ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p3, { 'label': 'Prime de bilan mensuel ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         <div class="col">
-            {{ form_row(form.p4, { 'label': 'Prime de service mensuel ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p4, { 'label': 'Prime de service mensuel ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         </div>
         <div class="form-group row">
         <div class="col">
-            {{ form_row(form.p5, { 'label': 'Indemnite transport mensuel ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p5, { 'label': 'Indemnite transport mensuel ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         <div class="col">
-            {{ form_row(form.p6, { 'label': 'Allocation familiale ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p6, { 'label': 'Allocation familiale ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         </div>
+
+
+
+
         {# <div class="form-group row">
         <div class="col"> #}
             {# <h6> Prime de rendement mensuel + PRC  : <span>{{ (((prime.PRBrute * prime.note / 20) / 3) + prime.PRBrute *2/3) + (prime.PRBrute * prime.note / 20) / 12 }}</span> #}
@@ -75,10 +103,10 @@
         <div class="form-group row">
 
         <div class="col">
-            {{ form_row(form.p10, { 'label': 'Indemnités complémentaire provisoire ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p10, { 'label': 'Indemnités complémentaire provisoire ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         <div class="col">
-            {{ form_row(form.p11, { 'label': 'Prime de manoeuvre ' ,'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.p11, { 'label': 'Prime de manoeuvre ' ,'attr': {'class': 'form-control','value':0}}) }}
         </div>
         </div>
         {# <div class="form-group row">
@@ -88,18 +116,18 @@
         </div> #}
         <div class="form-group row">
             <div class="col">
-                {{ form_row(form.p13, { 'label': 'Prime de panier ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p13, { 'label': 'Prime de panier ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
             <div class="col">
-                {{ form_row(form.p14, { 'label': 'Indemnité de nuit ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p14, { 'label': 'Indemnité de nuit ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
         </div>
         <div class="form-group row">
             <div class="col">
-                {{ form_row(form.p15, { 'label': 'Charge fiscale additionnelle ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p15, { 'label': 'Charge fiscale additionnelle ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
             <div class="col">
-                {{ form_row(form.p16, { 'label': 'Majoration prime spécifique ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p16, { 'label': 'Majoration prime spécifique ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
         </div>
         <div class="form-group row">
@@ -107,15 +135,15 @@
             {{ form_row(form.p17, { 'label': 'Augmentation PFA ' ,'attr': {'class': 'form-control'}}) }}
         </div> #}
             <div class="col">
-                {{ form_row(form.p18, { 'label': 'Indemnité de fonction ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p18, { 'label': 'Indemnité de fonction ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
             <div class="col">
-                {{ form_row(form.p19, { 'label': 'Indemnité kilométrique forfaitaire ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p19, { 'label': 'Indemnité kilométrique forfaitaire ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
         </div>
         <div class="form-group row">
             <div class="col">
-                {{ form_row(form.p20, { 'label': 'Autres indemnites ' ,'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.p20, { 'label': 'Autres indemnites ' ,'attr': {'class': 'form-control','value':0}}) }}
             </div>
         </div>
 

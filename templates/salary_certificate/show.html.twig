@@ -38,10 +38,11 @@
   <div class="title-container">
     <img src="{{ app.request.getSchemeAndHttpHost()}}/img/cnsft.png" alt="Mon logo">
     <p>
-      DIRECTION CENTRALE DE L'EXPLOITATION DU RESEAU FERROVIAIRE TUNISIEN
+      DIRECTION CENTRALE DE L'EXPLOITATION DU RESEAU FERROVIAIRE TUNISIEN<br><br><br><br><br><br>
+      DEPARTEMENT DE LA GESTION NORD-EST
     </p>
     </div>
-    
+    <br>
     <div class='head-text'>
         <span>
           N&deg;: {{ salary_certificate.id }}
@@ -54,6 +55,7 @@
     
     
     <div class="title-container" >
+    <br>
     <p >
     
       <u> <H2>ATTESTATION DE SALAIRE</H2></u>
@@ -61,13 +63,14 @@
     </p>
     </div>
     <div class="texte-container">
+    <br> <br> 
     <p>
-     {{ salary_certificate.chef }} certife que:
+     {{ salary_certificate.chef }} {{ salary_certificate.chef == "le chef de division administrative et gestion" ? "du Departement nord-est" : "" }} certife que:
     </p>
     <p>
       {{ salary_certificate.worker.Genre == "H" ? "Mr" : "Mme" }} 
-      {{ salary_certificate.worker.Nom }} 
-      {{ salary_certificate.worker.Prenom }} matricule {{salary_certificate.worker.ref}} ({{salary_certificate.worker.type}}) percoit un salaire mensuel
+     <span style="text-transform:uppercase;"> {{ salary_certificate.worker.Nom }} 
+      {{ salary_certificate.worker.Prenom }} </span> matricule {{salary_certificate.worker.ref}} ({{salary_certificate.worker.type}}) percoit un salaire mensuel
       brut {% set sb = salary_certificate.p20 
               + salary_certificate.p19
               + salary_certificate.p18
@@ -93,20 +96,26 @@
     <table style=" width: 50%; margin: auto; "
       border="1">
       <tbody>
-        <tr style="height: 10px;">
+      <?php if salary_certificate.P1 != 0 {
+          echo"<tr>
           <td>
             Element global mensuel
           </td>
-          <td style="width: 10.7401%; height: 10px;">
-            {{ salary_certificate.P1 | number_format(0, ',') }} 
+          <td>
+            {{ salary_certificate.P1 | number_format(3, ',') }} 
           </td>
-        </tr>
+        </tr>"
+
+      }
+      
+     ?>
+        
         <tr style="height: 18px;">
           <td >
             Indemnite de logement
           </td>
           <td >
-            {{ salary_certificate.p2 | number_format(0, ',')}}
+            {{ salary_certificate.p2 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -114,7 +123,7 @@
             Prime de bilan mensuel
           </td>
           <td >
-            {{ salary_certificate.p3 | number_format(0, ',')}}
+            {{ salary_certificate.p3 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -122,7 +131,7 @@
             Prime de service mensuel
           </td>
           <td >
-            {{ salary_certificate.p4 | number_format(0, ',')}}
+            {{ salary_certificate.p4 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -130,7 +139,7 @@
             Indemnite transport mensuel
           </td>
           <td >
-            {{ salary_certificate.p5 | number_format(0, ',')}}
+            {{ salary_certificate.p5 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -138,7 +147,7 @@
             Allocation familiale
           </td>
           <td >
-            {{ salary_certificate.p6 | number_format(0, ',')}}
+            {{ salary_certificate.p6 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -170,7 +179,7 @@
             Indemnit&eacute;s compl&eacute;mentaire provisoire
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p10 | number_format(0, ',')}}
+            {{ salary_certificate.p10 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -178,7 +187,7 @@
             Prime de manoeuvre
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p11 | number_format(0, ',')}}
+            {{ salary_certificate.p11 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -186,7 +195,7 @@
             Prime de maintenance
           </td>
           <td style="texte-container">
-            {{(prime.PM / 3) | number_format(0, ',')}}
+            {{(prime.PM / 3) | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -194,7 +203,7 @@
             Prime de panier
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p13 | number_format(0, ',')}}
+            {{ salary_certificate.p13 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -234,7 +243,7 @@
             Indemnit&eacute; de fonction
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p18 | number_format(0, ',')}}
+            {{ salary_certificate.p18 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -242,7 +251,7 @@
             Indemnit&eacute; kilom&eacute;trique forfaitaire
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p19 | number_format(0, ',')}}
+            {{ salary_certificate.p19 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -250,7 +259,7 @@
             Autres indemnites
           </td>
           <td style="texte-container">
-            {{ salary_certificate.p20 | number_format(0, ',')}}
+            {{ salary_certificate.p20 | number_format(3, ',')}}
           </td>
         </tr>
         <tr style="height: 18px;">
@@ -304,7 +313,7 @@
     </p>
     <p style="text-align: center;">
       <u>
-        {{salary_certificate.signer}}
+       <span style="text-transform:uppercase;"> {{salary_certificate.signer}} </span>
       </u>
     </p>
     </div>
