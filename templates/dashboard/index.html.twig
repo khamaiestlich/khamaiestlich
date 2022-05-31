@@ -3,18 +3,97 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div style="width:100%;display:flex;justify-content: center;align-items:center">
+        <div style="width:50%">
+        <div style='text-align: center;'>hello </div>
+            <canvas id="myChart"></canvas>
+        </div>
+        <div style="width:50%">
+            <div style='text-align: center;'>hello </div>
+            <canvas id="myChartPie"></canvas>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
 
-<div class="example-wrapper">
-    <h1>Hello lena bech taffichi les statistic ✅</h1>
-    <h2>+ statistic des attestation travail</h2>
-    <h2>+ statistic des attestation salaire</h2>
-    <h2>+ statistic des des facture</h2>
-    <img src="/img/123.png"> </img>
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [100, 10, 5, 2, 20, 30, 45],
+    }]
+  };
 
-    
-</div>
-{% endblock %}
+  const dataPie =  {
+  labels: [
+    'homme',
+    'femme',
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [{{homme}}, {{femme}}],
+options: {
+        plugins: {
+            title: {
+                display: true,
+                font: {weight: 'bold'},
+                text: 'Custom Chart Title',
+                fullSize: true,
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+        }
+    },
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+    ],
+    hoverOffset: 4
+  }]
+};
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+const configPie = {
+  type: 'pie',
+  data: dataPie,
+options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Custom Chart Title',
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+        }
+    }
+};
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+  const myChartPie = new Chart(
+    document.getElementById('myChartPie'),
+    configPie
+  );
+</script>
+
+{% endblock body %}
