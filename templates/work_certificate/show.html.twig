@@ -52,11 +52,11 @@
     <p>
       DEPARTEMENT DE LA ZONE NORD EST
     </p>
-    <br><br><br><br><br>
+    
     <p style="font-family: Arial">
       DIVISION ADMINISTRATIVE ET GESTION
     </p>
-    <br><br><br><br><br>
+    <br>
     </div>
    <div class='head-text'>
         <span>
@@ -64,9 +64,9 @@
         </span>
         <span style="margin-left: 70%">
           
-          TUNIS LE : {{ work_certificate.createdAt ? work_certificate.createdAt|date('Y-m-d') : '' }} 
+          TUNIS LE : {{ work_certificate.createdAt ? work_certificate.createdAt|date('d-m-Y') : '' }} 
         </span>
-        <br>
+        
     </div>
     <p style="text-align: left;">
       &nbsp;
@@ -81,8 +81,8 @@
     </div>  
     <div>
     <p style="line-height: 3em;">
-      &nbsp; &nbsp; &nbsp; &nbsp; Je soussign&eacute;, <span style="text-transform:uppercase;">  {{ work_certificate.chef }}</span> du Départementde la Zone Nord Est,
-      certifie que {{ work_certificate.worker.Genre == "H" ? "Mr" : "Mme" }} <span style="text-transform:uppercase;"> {{ work_certificate.worker.Prenom }} {{ work_certificate.worker.Nom }} </span> matricule {{ work_certificate.worker.ref }} ({{ work_certificate.worker.type }}) est au service de
+      &nbsp; &nbsp; &nbsp; &nbsp; Je soussign&eacute;, <span style="text-transform:uppercase;">  {{ work_certificate.chef }} {{ work_certificate.chef == "le chef du division administrative et gestion" ? " du Départementde la Zone Nord Est" : "" }}</span> ,
+      certifie que {{ work_certificate.worker.Genre == "H" ? "Mr" : "Mme" }} <span style="text-transform:uppercase; font-weight: bold;"> {{ work_certificate.worker.Prenom }} {{ work_certificate.worker.Nom }} </span> matricule <span style="font-weight: bold;">{{ work_certificate.worker.ref }}</span> ({{ work_certificate.worker.type }}) est au service de
       la SNCFT en qualit&eacute; de {{ work_certificate.worker.poste }}.
     </p>
     <p style="line-height: 3em;">
@@ -91,21 +91,21 @@
       droit.
     </p>
     <p style="text-align: center; line-height: 2em;">
-    <br><br>
+    <br>
       <u>
-<span style="text-transform:uppercase;">  {{ work_certificate.chef }}</span>      </u>
+<span style="text-transform:uppercase; font-weight: bold;" >  {{ work_certificate.chef }}</span>      </u>
     </p>
     <p style="text-align: center;">
       <u>
-      <span style="text-transform:uppercase;">  {{ work_certificate.Signature }}</span>
+      <span style="text-transform:uppercase; font-weight: bold;">  {{ work_certificate.Signature }}</span>
       </u>
     </p>
     </div>
   </div>
 
-  <div style="margin-top: 200px ; font-size: 16px">
+    <div style="position: absolute;bottom:0; font-size: 8px">
      Créé par : {{ work_certificate.createdBy.fullname }}
-  </div>
+    </div>
         <script>
     $("document").ready(function () {
             var divContents = $("#dvContainer").html();
