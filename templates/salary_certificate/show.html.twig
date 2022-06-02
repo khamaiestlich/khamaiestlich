@@ -74,17 +74,17 @@
       brut {% set sb = salary_certificate.p20 
               + salary_certificate.p19
               + salary_certificate.p18
-              + (prime.APFA / 12)
+              + salary_certificate.p17
               + salary_certificate.p16
               + salary_certificate.p15
               + salary_certificate.p14
               + salary_certificate.p13
-              + (prime.PM / 3)
+              + salary_certificate.p12
               + salary_certificate.p11
               + salary_certificate.p10
-              + (prime.PFA / 12  * prime.vex / 100)
-              + (prime.PFA / 12)
-              + (((((prime.PRBrute * prime.note / 20) / 3) + prime.PRBrute *2/3) + (prime.PRBrute * prime.note / 20)) /12 )
+              + salary_certificate.p9
+              + salary_certificate.p8
+              + salary_certificate.p7 
               + salary_certificate.p6
               + salary_certificate.p5
               + salary_certificate.p4
@@ -96,20 +96,17 @@
     <table style=" width: 50%; margin: auto; "
       border="1">
       <tbody>
-      <?php if salary_certificate.P1 != 0 {
-          echo"<tr>
+        {% if salary_certificate.p1 > 0 %}
+        <tr>
           <td>
             Element global mensuel
           </td>
           <td>
             {{ salary_certificate.P1 | number_format(3, ',') }} 
           </td>
-        </tr>"
-
-      }
-      
-     ?>
-        
+        </tr>
+        {% endif %}
+        {% if salary_certificate.p2 > 0 %}
         <tr style="height: 18px;">
           <td >
             Indemnite de logement
@@ -118,14 +115,18 @@
             {{ salary_certificate.p2 | number_format(3, ',')}}
           </td>
         </tr>
-        <tr style="height: 18px;">
-          <td >
-            Prime de bilan mensuel
-          </td>
-          <td >
-            {{ salary_certificate.p3 | number_format(3, ',')}}
-          </td>
-        </tr>
+        {% endif %}
+        {% if salary_certificate.p3 > 0 %}
+          <tr style="height: 18px;">
+            <td >
+              Prime de bilan mensuel
+            </td>
+            <td >
+              {{ salary_certificate.p3 | number_format(3, ',')}}
+            </td>
+          </tr>
+        {% endif %}  
+        {% if salary_certificate.p4 > 0 %}
         <tr style="height: 18px;">
           <td >
             Prime de service mensuel
@@ -134,6 +135,8 @@
             {{ salary_certificate.p4 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}  
+        {% if salary_certificate.p5 > 0 %}
         <tr style="height: 18px;">
           <td >
             Indemnite transport mensuel
@@ -142,6 +145,8 @@
             {{ salary_certificate.p5 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}  
+        {% if salary_certificate.p6 > 0 %}
         <tr style="height: 18px;">
           <td >
             Allocation familiale
@@ -150,30 +155,38 @@
             {{ salary_certificate.p6 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p7 > 0 %}
         <tr style="height: 18px;">
           <td >
             Prime de rendement mensuel + PRC
           </td>
           <td style="texte-container">
-            {{ (((((prime.PRBrute * prime.note / 20) / 3) + prime.PRBrute *2/3) + (prime.PRBrute * prime.note / 20)) /12 ) | number_format(3, ',')}}
+            {{ salary_certificate.p7 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p8 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Prime fin d'annee mensuel
           </td>
           <td style="texte-container">
-            {{ (prime.PFA / 12) | number_format(3, ',')}}
+            {{ salary_certificate.p8 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p9 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Prime d'exploitation
           </td>
           <td style="texte-container">
-            {{ (prime.PFA / 12  * prime.vex / 100) | number_format(3, ',')}}
+            {{ salary_certificate.p9 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p10 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Indemnit&eacute;s compl&eacute;mentaire provisoire
@@ -182,6 +195,8 @@
             {{ salary_certificate.p10 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p11 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Prime de manoeuvre
@@ -190,14 +205,18 @@
             {{ salary_certificate.p11 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p12 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Prime de maintenance
           </td>
           <td style="texte-container">
-            {{(prime.PM / 3) | number_format(3, ',')}}
+            {{salary_certificate.p12 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p13 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Prime de panier
@@ -206,6 +225,8 @@
             {{ salary_certificate.p13 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p14 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Indemnit&eacute; de nuit
@@ -214,6 +235,8 @@
             {{ salary_certificate.p14 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p15 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Charge fiscale additionnelle
@@ -222,6 +245,8 @@
             {{ salary_certificate.p15 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p16 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Majoration prime sp&eacute;cifique
@@ -230,14 +255,18 @@
             {{ salary_certificate.p16 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p17 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Augmentation PFA
           </td>
           <td style="texte-container">
-            {{ (prime.APFA / 12) | number_format(3, ',')}}
+            {{ salary_certificate.p17 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p18 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Indemnit&eacute; de fonction
@@ -246,6 +275,8 @@
             {{ salary_certificate.p18 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p19 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Indemnit&eacute; kilom&eacute;trique forfaitaire
@@ -254,6 +285,8 @@
             {{ salary_certificate.p19 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
+        {% if salary_certificate.p20 > 0 %}
         <tr style="height: 18px;">
           <td style="">
             Autres indemnites
@@ -262,6 +295,7 @@
             {{ salary_certificate.p20 | number_format(3, ',')}}
           </td>
         </tr>
+        {% endif %}
         <tr style="height: 18px;">
           <td style="">
             SALAIRE MENSUEL BRUT
@@ -270,17 +304,17 @@
             {% set sb = salary_certificate.p20 
               + salary_certificate.p19
               + salary_certificate.p18
-              + (prime.APFA / 12)
+              + salary_certificate.p17
               + salary_certificate.p16
               + salary_certificate.p15
               + salary_certificate.p14
               + salary_certificate.p13
-              + (prime.PM / 3)
+              + salary_certificate.p12
               + salary_certificate.p11
               + salary_certificate.p10
-              + (prime.PFA / 12  * prime.vex / 100)
-              + (prime.PFA / 12)
-              + (((((prime.PRBrute * prime.note / 20) / 3) + prime.PRBrute *2/3) + (prime.PRBrute * prime.note / 20)) /12 )
+              + salary_certificate.p9
+              + salary_certificate.p8
+              + salary_certificate.p7
               + salary_certificate.p6
               + salary_certificate.p5
               + salary_certificate.p4

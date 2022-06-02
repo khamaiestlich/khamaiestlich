@@ -27,7 +27,7 @@ class SalaryCertificateController extends AbstractController
     public function index(SalaryCertificateRepository $salaryCertificateRepository): Response
     {
         return $this->render('salary_certificate/index.html.twig', [
-            'salary_certificates' => $salaryCertificateRepository->findAll(),
+            'salary_certificates' => array_reverse($salaryCertificateRepository->findAll()) ,
         ]);
     }
 
@@ -43,19 +43,24 @@ class SalaryCertificateController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());
+            // dd($form->getData());
             $salaryCertificate->setP1($form['P1']->getData());
             $salaryCertificate->setP2($form['p2']->getData());
             $salaryCertificate->setP3($form['p3']->getData());
             $salaryCertificate->setP4($form['p4']->getData());
             $salaryCertificate->setP5($form['p5']->getData());
             $salaryCertificate->setP6($form['p6']->getData());
+            $salaryCertificate->setP7(((((($form['PRBrute']->getData() * $form['note']->getData() / 20) / 3) + $form['PRBrute']->getData() *2/3) + ($form['PRBrute']->getData() * $form['note']->getData() / 20)) /12 ));
+            $salaryCertificate->setP8(($form['PFA']->getData() / 12));
+            $salaryCertificate->setP9(($form['PFA']->getData() / 12  * $form['vex']->getData() / 100));   
             $salaryCertificate->setP10($form['p10']->getData());
             $salaryCertificate->setP11($form['p11']->getData());
+            $salaryCertificate->setP12($form['PM']->getData() / 3);
             $salaryCertificate->setP13($form['p13']->getData());
             $salaryCertificate->setP14($form['p14']->getData());
             $salaryCertificate->setP15($form['p15']->getData());
             $salaryCertificate->setP16($form['p16']->getData());
+            $salaryCertificate->setP17(($form['APFA']->getData() / 12));
             $salaryCertificate->setP18($form['p18']->getData());
             $salaryCertificate->setP19($form['p19']->getData());
             $salaryCertificate->setP20($form['p20']->getData());
@@ -71,7 +76,7 @@ class SalaryCertificateController extends AbstractController
                 $worker->setRef($form['reference']->getData());
                 $worker->setGenre($form['Genre']->getData());
                 $worker->setType($form['type']->getData());
-                $worker->setPoste($form['poste']->getData());
+                
                 $entityManager->persist($worker);
             }
             else{
@@ -79,7 +84,8 @@ class SalaryCertificateController extends AbstractController
             }
             $salaryCertificate->setWorker($worker);
             $salaryCertificateRepository->add($salaryCertificate);
-            return $this->redirectToRoute('app_salary_certificate_index', [], Response::HTTP_SEE_OTHER);
+            // return $this->redirectToRoute('app_salary_certificate_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_salary_certificate_show', ["id"=>$salaryCertificate->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('salary_certificate/new.html.twig', [

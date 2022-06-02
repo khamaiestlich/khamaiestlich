@@ -38,14 +38,14 @@ class WorkCertificateController extends AbstractController
         }
         else if ($lang === "fr") {
             return $this->render('work_certificate/index.html.twig', [
-                'work_certificates' => $workCertificateRepository->findBy([
+                'work_certificates' => array_reverse($workCertificateRepository->findBy([
                     'lang' => 'fr'
-                ]),
+                ])),
             ]);
         }
         else{
             return $this->render('work_certificate/index.html.twig', [
-                'work_certificates' => $workCertificateRepository->findAll(),
+                'work_certificates' =>array_reverse( $workCertificateRepository->findAll()),
             ]);
         }
     }
