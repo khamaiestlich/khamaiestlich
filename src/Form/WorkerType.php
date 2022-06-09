@@ -15,12 +15,12 @@ class WorkerType extends AbstractType
         $builder
             ->add('Nom')
             ->add('Prenom')
-            ->add('cin')
+            // ->add('cin')
             ->add('ref')
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'stager' => 'stager',
-                    'motarassem' => 'motarassem',
+                    'stager' => 'Stagiaire',
+                    'motarassem' => 'Titulaire',
                 ],
             ])
         ;

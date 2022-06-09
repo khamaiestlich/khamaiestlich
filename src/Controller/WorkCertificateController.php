@@ -36,16 +36,11 @@ class WorkCertificateController extends AbstractController
                 ]),
             ]);
         }
-        else if ($lang === "fr") {
+        else {
             return $this->render('work_certificate/index.html.twig', [
                 'work_certificates' => array_reverse($workCertificateRepository->findBy([
                     'lang' => 'fr'
                 ])),
-            ]);
-        }
-        else{
-            return $this->render('work_certificate/index.html.twig', [
-                'work_certificates' =>array_reverse( $workCertificateRepository->findAll()),
             ]);
         }
     }
@@ -193,15 +188,13 @@ class WorkCertificateController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_work_certificate_delete", methods={"POST"})
+     * @Route("delete/{id}", name="app_work_certificate_delete")
      */
-    public function delete(Request $request, WorkCertificate $workCertificate, WorkCertificateRepository $workCertificateRepository): Response
+    public function delete( WorkCertificate $workCertificate,Request $request, WorkCertificateRepository $workCertificateRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$workCertificate->getId(), $request->request->get('_token'))) {
-            $workCertificateRepository->remove($workCertificate);
-        }
-
-        return $this->redirectToRoute('app_work_certificate_index', [], Response::HTTP_SEE_OTHER);
+        $workCertificateRepository->remove($workCertificate);
+        
+        return $this->redirectToRoute('app_work_certificate_index', ['lang'=> 'fr'], Response::HTTP_SEE_OTHER);
     }
 
     private function generatePdf($workCertificate,$lang=null)

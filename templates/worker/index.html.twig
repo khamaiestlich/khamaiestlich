@@ -1,18 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Worker index{% endblock %}
+{% block title %}Liste des employées{% endblock %}
 
 {% block body %}
-    <h1>Worker index</h1>
-
-    <table class="table">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">
+        Liste des employées
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>nom</th>
                 <th>prenom</th>
-                <th>Cin</th>
-                <th>Ref</th>
+                
+                <th>Matricule</th>
                 <th>Situation</th>
                 <th>actions</th>
             </tr>
@@ -23,7 +32,7 @@
                 <td>{{ worker.id }}</td>
                 <td>{{ worker.Nom }}</td>
                 <td>{{ worker.Prenom }}</td>
-                <td>{{ worker.cin }}</td>
+                
                 <td>{{ worker.ref }}</td>
                 <td>{{ worker.type }}</td>
                 <td>
@@ -38,6 +47,9 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+    </div>
+</div>
 
     <a href="{{ path('app_worker_new') }}">Create new</a>
 {% endblock %}

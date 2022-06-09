@@ -142,6 +142,11 @@ class SalaryCertificate
      */
     private $chef;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archived;
+
    
 
     public function getId(): ?int
@@ -445,6 +450,18 @@ class SalaryCertificate
     public function setChef(?string $chef): self
     {
         $this->chef = $chef;
+
+        return $this;
+    }
+
+    public function getArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(?bool $archived): self
+    {
+        $this->archived = $archived;
 
         return $this;
     }

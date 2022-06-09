@@ -29,10 +29,10 @@ class Worker
      */
     private $Prenom;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $cin;
+    // /**
+    //  * @ORM\Column(type="integer", nullable=true)
+    //  */
+    // private $cin;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -55,7 +55,7 @@ class Worker
     private $Genre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $poste;
 
@@ -101,17 +101,17 @@ class Worker
         return $this;
     }
 
-    public function getCin(): ?int
-    {
-        return $this->cin;
-    }
+    // public function getCin(): ?int
+    // {
+    //     return $this->cin;
+    // }
 
-    public function setCin(int $cin): self
-    {
-        $this->cin = $cin;
+    // public function setCin(int $cin): self
+    // {
+    //     $this->cin = $cin;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getRef(): ?string
     {

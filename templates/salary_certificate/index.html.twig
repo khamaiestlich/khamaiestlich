@@ -67,7 +67,7 @@
                   }}
                 </td>
                 <td>
-                  {{ 5 }}
+                  {{ salary_certificate.worker.salaryCertificates | length}}
                 </td>
                 <td>
                   <a href="{{
@@ -80,17 +80,17 @@
                     }}"
                     target='_blank'
                     >
-                    show
+                    imprimer
                   </a>
                   <a href="{{
                     path(
-                      'app_salary_certificate_edit',
+                      'app_salary_certificate_delete',
                       {
                         id: salary_certificate.id
                       }
                     )
                     }}">
-                    edit
+                    supprimer
                   </a>
                 </td>
               </tr>

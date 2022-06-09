@@ -19,10 +19,7 @@
                 <th>Prénom</th>
                 <td>{{ worker.Prenom }}</td>
             </tr>
-            <tr>
-                <th>Cin</th>
-                <td>{{ worker.cin }}</td>
-            </tr>
+            
             <tr>
                 <th>Matricule</th>
                 <td>{{ worker.ref }}</td>
@@ -30,6 +27,14 @@
             <tr>
                 <th>Situation</th>
                 <td>{{ worker.type }}</td>
+            </tr>
+            <tr>
+                <th>Nombre des attestations de travaille</th>
+                <td>{{ worker.workCertificates | length }}</td>
+            </tr>
+            <tr>
+                <th>Nombre des attestations de salaire</th>
+                <td>{{ worker.salaryCertificates | length }}</td>
             </tr>
         </tbody>
     </table>

@@ -66,7 +66,7 @@
                   }}
                 </td>
                 <td>
-                  {{ 5 }}
+                   {{ work_certificate.worker.workCertificates | length}}
                 </td>
                 <td>
                   <a href="{{
@@ -81,21 +81,25 @@
                     target='_blank'
                     >
                     {% if work_certificate.lang == 'ar' %}
-                        اضهر 
+                       | اضهر 
                     {% else %}
-                        afficher
+                       | afficher
                     {% endif %}        
                   </a>
-                  {# <a href="{{
+                  <a href="{{
                     path(
-                      'app_work_certificate_edit',
+                      'app_work_certificate_delete',
                       {
                         id: work_certificate.id
                       }
                     )
                     }}">
-                    edit
-                  </a> #}
+                      {% if work_certificate.lang == 'ar' %}
+                       | حذف  
+                    {% else %}
+                       | supprimer
+                    {% endif %}
+                  </a>
                 </td>
               </tr>
             {% else %}

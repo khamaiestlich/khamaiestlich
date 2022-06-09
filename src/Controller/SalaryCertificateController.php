@@ -129,13 +129,11 @@ class SalaryCertificateController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_salary_certificate_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="app_salary_certificate_delete")
      */
     public function delete(Request $request, SalaryCertificate $salaryCertificate, SalaryCertificateRepository $salaryCertificateRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$salaryCertificate->getId(), $request->request->get('_token'))) {
-            $salaryCertificateRepository->remove($salaryCertificate);
-        }
+        $salaryCertificateRepository->remove($salaryCertificate);
 
         return $this->redirectToRoute('app_salary_certificate_index', [], Response::HTTP_SEE_OTHER);
     }
