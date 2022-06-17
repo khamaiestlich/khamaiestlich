@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Utilisateur index{% endblock %}
 
 {% block body %}
       <div class="card shadow mb-4">
@@ -19,8 +19,8 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>FullName</th>
-                <th>actions</th>
+                <th>Nom Prénom</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
@@ -30,13 +30,13 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.fullName }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Afficher</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">|Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Resultat 0</td>
             </tr>
         {% endfor %}
         </tbody>

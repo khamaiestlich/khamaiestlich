@@ -5,13 +5,17 @@
 {% block body %}
     <div style="width:100%;display:flex;justify-content: center;align-items:center">
         <div style="width:50%">
-        <div style='text-align: center;'>hello </div>
+          <div style='text-align: center;'>
+               nombre d'attestation de travail par mois 
             <canvas id="myChart"></canvas>
+               nombre d'attestation de salaire par mois 
+            <canvas  id="statsalaire"></canvas>
+          </div>
         </div>
-        <div style="width:50%">
-            <div style='text-align: center;'>hello </div>
+          <div style="width:50%">
+            <div style='text-align: center;'>Le nembre d'Employée par genre 
             <canvas id="myChartPie"></canvas>
-        </div>
+          </div>
     </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
@@ -22,15 +26,30 @@
     'April',
     'May',
     'June',
+    'Juillet',
+    'aout',
+    'septembre',
+    'octobre',
+    'novembre',
+    'secembre',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'nembre d attestation de travaille',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [100, 10, 5, 2, 20, 30, 45],
+      data: [30, 10, 9, 19, 20, 30, 45, 54, 52, 23, 24, 29],
+    }]
+  };
+   const datasalire = {
+    labels: labels,
+    datasets: [{
+      label: 'nembre d attestation de salaire',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [30, 10, 20, 62, 20, 36, 24, 54, 52, 56, 24, 29],
     }]
   };
 
@@ -60,12 +79,17 @@ options: {
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
     ],
-    hoverOffset: 4
+    hoverOffset: 2
   }]
 };
   const config = {
     type: 'line',
     data: data,
+    options: {}
+  };
+  const configsalaire = {
+    type: 'line',
+    data: datasalire,
     options: {}
   };
 
@@ -89,7 +113,12 @@ const myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
+  const statsalaire = new Chart(
+    document.getElementById('statsalaire'),
+    configsalaire
+  );
 
+  
   const myChartPie = new Chart(
     document.getElementById('myChartPie'),
     configPie
